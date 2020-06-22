@@ -21,7 +21,7 @@ public class Wethack {
     public static Wethack INSTANCE;
 
     /**
-     * This is the first initialization event. Register tile entities here.
+     * This is the first initialization event.
      * The registry events below will have fired prior to entry to this method.
      */
     @Mod.EventHandler
@@ -36,7 +36,7 @@ public class Wethack {
     }
 
     /**
-     * This is the final initialization event. Register actions from other mods here
+     * This is the final initialization event.
      */
     @Mod.EventHandler
     public void postinit(FMLPostInitializationEvent event) {}

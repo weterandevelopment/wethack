@@ -1,0 +1,16 @@
+[
+    {
+        "modid": "wethack",
+        "name": "Wethack",
+        "description": "cock",
+        "version": "${version}",
+        "mcversion": "${mcversion}",
+        "url": "proswiss.org",
+        "updateUrl": "",
+        "authorList": [],
+        "credits": "",
+        "logoFile": "",
+        "screenshots": [],
+        "dependencies": []
+    }
+]

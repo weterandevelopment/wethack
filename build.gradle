@@ -35,6 +35,8 @@ repositories {
 }
 
 dependencies {
+    compile(group: 'io.github.classgraph', name: 'classgraph', version: '4.8.86')
+    implementation 'org.jetbrains:annotations:15.0'
 }
 
 processResources {

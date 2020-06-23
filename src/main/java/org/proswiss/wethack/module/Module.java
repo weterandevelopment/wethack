@@ -14,6 +14,7 @@ public abstract class Module {
      */
     private Setting<String> name;
     private Setting<Boolean> enabled;
+    private Setting<Integer> bind;
 
     /**
      * The Category variable of module
@@ -96,6 +97,26 @@ public abstract class Module {
         } else {
             enable();
         }
+    }
+
+    /**
+     * Getters and Setters for Settings
+     */
+
+    public String getName() {
+        return name.getValue();
+    }
+
+    public void setName(String name) {
+        this.name.setValue(name);
+    }
+
+    public int getBind() {
+        return bind.getValue();
+    }
+
+    public void setBind(int bind) {
+        this.bind.setValue(bind);
     }
 
     /**

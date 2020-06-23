@@ -1,11 +1,9 @@
-package org.proswiss.wethack.event;
+package org.proswiss.wethack.event.handler;
 
-import net.minecraftforge.client.event.InputUpdateEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import org.lwjgl.input.Keyboard;
-import org.proswiss.wethack.Wethack;
 import org.proswiss.wethack.module.Module;
 import org.proswiss.wethack.module.ModuleManager;
 

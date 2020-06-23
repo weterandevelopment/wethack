@@ -5,7 +5,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import org.proswiss.wethack.event.EventHandler;
+import org.proswiss.wethack.event.handler.EventHandler;
 import org.proswiss.wethack.module.ModuleManager;
 
 @Mod(

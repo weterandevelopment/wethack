@@ -1,0 +1,9 @@
+{
+  "required": true,
+  "compatibilityLevel": "JAVA_8",
+  "package": "org.proswiss.wethack.mixin.mixins",
+  "refmap": "mixins.wethack.refmap.json",
+  "mixins": [
+
+  ]
+}

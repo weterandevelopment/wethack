@@ -5,13 +5,21 @@ buildscript {
             name = "forge"
             url = "https://files.minecraftforge.net/maven"
         }
+        maven {
+            name = 'SpongePowered'
+            url = 'http://repo.spongepowered.org/maven'
+        }
     }
     dependencies {
         classpath "net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT"
+        classpath 'org.spongepowered:mixingradle:0.6-SNAPSHOT'
+        classpath 'com.github.jengelman.gradle.plugins:shadow:1.2.3'
     }
 }
 
 apply plugin: "net.minecraftforge.gradle.forge"
+apply plugin: 'org.spongepowered.mixin'
+apply plugin: 'com.github.johnrengelman.shadow'
 
 group = 'org.proswiss'
 version = '1.0'
@@ -31,10 +39,26 @@ minecraft {
 }
 
 repositories {
+    maven {
+        name = 'spongepowered-repo'
+        url = 'http://repo.spongepowered.org/maven/'
+    }
+    maven {
+        name = "jitpack.io"
+        url = "https://jitpack.io"
+    }
     mavenCentral()
+    jcenter()
 }
 
 dependencies {
+    compile("org.spongepowered:mixin:0.7.4-SNAPSHOT") {
+        exclude module: 'launchwrapper'
+        exclude module: 'guava'
+        exclude module: 'gson'
+        exclude module: 'commons-io'
+    }
+    compile(group: 'com.github.cookiedragon234', name: 'EventDispatcher', version:'4c68f11e028665bd05d2bdb3326e344f894da312')
     compile(group: 'io.github.classgraph', name: 'classgraph', version: '4.8.86')
     implementation 'org.jetbrains:annotations:15.0'
 }
@@ -57,3 +81,42 @@ processResources {
         exclude "mcmod.info"
     }
 }
+
+mixin {
+    defaultObfuscationEnv searge
+    add sourceSets.main, 'mixins.wethack.refmap.json'
+}
+
+shadowJar {
+    dependencies {
+        include(dependency('org.spongepowered:mixin'))
+        include(dependency('io.github.classgraph:classgraph'))
+        include(dependency('com.github.cookiedragon234:EventDispatcher'))
+    }
+
+    exclude 'dummyThing'
+    exclude 'LICENSE.txt'
+    classifier = 'release'
+}
+
+reobf {
+    shadowJar {
+        mappingType = 'SEARGE'
+        classpath = sourceSets.main.compileClasspath
+    }
+}
+
+jar {
+    manifest {
+        attributes(
+                'MixinConfigs': 'mixins.wethack.json',
+                'TweakClass': 'org.spongepowered.asm.launch.MixinTweaker',
+                'TweakOrder': 0,
+                'FMLCorePluginContainsFMLMod': 'true',
+                'FMLCorePlugin': 'org.proswiss.wethack.mixin.LoadingPlugin',
+                'ForceLoadAsMod': 'true',
+        )
+    }
+}
+
+build.dependsOn(shadowJar)

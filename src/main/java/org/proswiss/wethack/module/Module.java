@@ -1,5 +1,6 @@
 package org.proswiss.wethack.module;
 
+import cookiedragon.eventsystem.EventDispatcher;
 import org.proswiss.wethack.setting.Setting;
 
 /**
@@ -23,12 +24,15 @@ public abstract class Module {
 
     /**
      * Constructor for the Module Class
+     * Also puts the Module on the EventDispatcher Bus
      * @param name The Name of the Module
      * @param category The Category of the Module
      */
     public Module(String name, Category category) {
         this.name.setValue(name);
         this.category = category;
+
+        EventDispatcher.Companion.register(this);
     }
 
     /**

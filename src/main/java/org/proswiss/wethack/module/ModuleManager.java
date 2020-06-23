@@ -16,6 +16,8 @@ public class ModuleManager {
 
     /**
      * Scans all classes which extend {@link Module} using ClassGraph, and initializes them.
+     * You can also do it manually, by manually adding every module to the modules ArrayList using modules.add(ExampleModule.java);
+     * This solution is simpler, especially if this is your first time working with java
      */
     public static void initialize() {
         List<Class<Module>> moduleClasses;

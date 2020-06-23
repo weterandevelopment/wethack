@@ -4,6 +4,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import org.proswiss.wethack.module.ModuleManager;
 
 @Mod(
         modid = Wethack.MOD_ID,
@@ -32,7 +33,7 @@ public class Wethack {
      */
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
-
+        ModuleManager.initialize();
     }
 
     /**

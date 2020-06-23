@@ -20,7 +20,7 @@ public class EventHandler {
     /**
      * The Client Tick Event gets called every tick.
      * For every tick we loop through the List of Modules, check if they're enabled and if they are run the Modules onUpdate method.
-     * @param event Specifies the event we want this to be called at
+     * @param event Specifies the event we want this to be called at in this case ClientTickEvent
      */
     @SubscribeEvent
     public void onTick(TickEvent.ClientTickEvent event) {

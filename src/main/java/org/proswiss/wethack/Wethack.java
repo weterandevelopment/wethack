@@ -1,9 +1,11 @@
 package org.proswiss.wethack;
 
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import org.proswiss.wethack.event.EventHandler;
 import org.proswiss.wethack.module.ModuleManager;
 
 @Mod(
@@ -33,9 +35,12 @@ public class Wethack {
      */
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
+
+        // Put the EventHandler on the Forge Event Bus
+        MinecraftForge.EVENT_BUS.register(EventHandler.INSTANCE);
+
         ModuleManager.initialize();
     }
-
     /**
      * This is the final initialization event.
      */

@@ -36,4 +36,12 @@ public class ModuleManager {
             }
         });
     }
+
+    /**
+     * Returns a list of the initialized Modules
+     * @return ArrayList<Module> List of modules
+     */
+    public static ArrayList<Module> getModules() {
+        return modules;
+    }
 }

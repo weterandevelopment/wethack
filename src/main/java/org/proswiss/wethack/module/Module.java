@@ -16,6 +16,21 @@ public abstract class Module {
     private Setting<Boolean> enabled;
 
     /**
+     * The Category variable of module
+     */
+    private Category category;
+
+    /**
+     * Constructor for the Module Class
+     * @param name The Name of the Module
+     * @param category The Category of the Module
+     */
+    public Module(String name, Category category) {
+        this.name.setValue(name);
+        this.category = category;
+    }
+
+    /**
      * Called every client tick. Useful for most modules.
      */
     public void onUpdate() {
@@ -82,4 +97,12 @@ public abstract class Module {
             enable();
         }
     }
+
+    /**
+     * The Enum for all the Categories. Determines what Category a Module is in.
+     */
+    public enum Category {
+        COMBAT, PLAYER, MOVEMENT, RENDER, HUD, EXPLOITS
+    }
+
 }

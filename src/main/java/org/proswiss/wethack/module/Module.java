@@ -1,5 +1,7 @@
 package org.proswiss.wethack.module;
 
+import org.proswiss.wethack.setting.Setting;
+
 /**
  * Abstract base class for modules. Contains essential methods such as onTick.
  *
@@ -8,9 +10,10 @@ package org.proswiss.wethack.module;
 public abstract class Module {
 
     /**
-     * Defines whether the Module is enabled or not.
+     * General settings for module
      */
-    boolean enabled = false;
+    private Setting<String> name;
+    private Setting<Boolean> enabled;
 
     /**
      * Called every client tick. Useful for most modules.
@@ -38,14 +41,45 @@ public abstract class Module {
      * @return boolean whether the Module is enabled or not.
      */
     public boolean isEnabled() {
-        return enabled;
+        return enabled.getValue();
     }
 
     /**
-     * Sets the enabled boolean to the module to the input parameter.
-     * @param enabled Boolean of what to set the Modules "enabled" boolean variable to.
+     * Sets the enabled setting to the module to the input parameter.
+     * @param enabled Boolean of what to set the Modules "enabled" setting to.
      */
     public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
+        if (enabled) {
+            enable();
+        } else {
+            disable();
+        }
+    }
+
+    /**
+     * Enable module
+     */
+    public void enable() {
+        this.enabled.setValue(true);
+        onEnable();
+    }
+
+    /**
+     * Disable module
+     */
+    public void disable() {
+        this.enabled.setValue(false);
+        onDisable();
+    }
+
+    /**
+     * Enable module if disabled, or disable module if enabled
+     */
+    public void toggle() {
+        if (this.enabled.getValue()) {
+            disable();
+        } else {
+            enable();
+        }
     }
 }

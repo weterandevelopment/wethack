@@ -6,6 +6,11 @@ import org.proswiss.wethack.Wethack;
 import org.proswiss.wethack.module.Module;
 import org.proswiss.wethack.module.ModuleManager;
 
+/**
+ * EventHandler
+ *
+ * @author DarkiBoi
+ */
 public class EventHandler {
 
     public static final EventHandler INSTANCE = new EventHandler();

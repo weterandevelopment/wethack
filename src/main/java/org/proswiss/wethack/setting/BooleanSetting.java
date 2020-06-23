@@ -1,7 +1,7 @@
 package org.proswiss.wethack.setting;
 
 /**
- * Number Setting class, for integers, longs, doubles, and floats
+ * Boolean Settings class
  *
  * @author zyktex
  */

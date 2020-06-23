@@ -5,7 +5,7 @@ package org.proswiss.wethack.setting;
  *
  * @author zyktex
  */
-abstract class Setting<T> {
+public abstract class Setting<T> {
     private String name;
     private T value;
 

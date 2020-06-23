@@ -32,3 +32,6 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 ## License
 [GPL-v3](https://www.gnu.org/licenses/gpl-3.0.en.html)
+In a nutshell, you can use this program commercially, modify it, distribute it, and use it privately; however, you must have the same license, you must state the changes you made, and you **must disclose the source**.
+
+This free software comes with no warranty whatsoever, and is not liable for any damages to you, including any general, special, incidental, or consequential damage

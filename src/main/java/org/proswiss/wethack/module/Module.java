@@ -46,14 +46,14 @@ public abstract class Module {
      * Called whenever the module is enabled. Can be overridden to not register event handlers, etc.
      */
     public void onEnable() {
-
+        EventDispatcher.Companion.subscribe(this);
     }
 
     /**
      * Called whenever the module is disabled. Can be overridden to not unregister event handlers, etc.
      */
     public void onDisable() {
-
+        EventDispatcher.Companion.unsubscribe(this);
     }
 
     /**

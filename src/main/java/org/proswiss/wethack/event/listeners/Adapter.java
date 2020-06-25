@@ -3,6 +3,7 @@ package org.proswiss.wethack.event.listeners;
 import cookiedragon.eventsystem.EventDispatcher;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent;
+import net.minecraftforge.fml.common.gameevent.TickEvent;
 import org.proswiss.wethack.event.events.KeyPressEvent;
 import org.proswiss.wethack.event.events.UpdateEvent;
 
@@ -14,7 +15,7 @@ public class Adapter {
      * @param event The Event we want this to be called at
      */
     @SubscribeEvent
-    public void onTick(net.minecraftforge.fml.common.gameevent.TickEvent.ClientTickEvent event) {
+    public void onTick(TickEvent.ClientTickEvent event) {
         UpdateEvent updateEvent = new UpdateEvent();
         EventDispatcher.Companion.dispatch(updateEvent);
     }

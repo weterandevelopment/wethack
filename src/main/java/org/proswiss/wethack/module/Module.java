@@ -1,6 +1,8 @@
 package org.proswiss.wethack.module;
 
 import cookiedragon.eventsystem.EventDispatcher;
+import cookiedragon.eventsystem.Subscriber;
+import org.proswiss.wethack.event.events.UpdateEvent;
 import org.proswiss.wethack.setting.Setting;
 
 /**
@@ -25,7 +27,8 @@ public abstract class Module {
     /**
      * Constructor for the Module Class
      * Also puts the Module on the EventDispatcher Bus
-     * @param name The Name of the Module
+     *
+     * @param name     The Name of the Module
      * @param category The Category of the Module
      */
     public Module(String name, Category category) {
@@ -58,6 +61,7 @@ public abstract class Module {
 
     /**
      * Returns a boolean true or false whether the Module is enabled or not.
+     *
      * @return boolean whether the Module is enabled or not.
      */
     public boolean isEnabled() {
@@ -66,6 +70,7 @@ public abstract class Module {
 
     /**
      * Sets the enabled setting to the module to the input parameter.
+     *
      * @param enabled Boolean of what to set the Modules "enabled" setting to.
      */
     public void setEnabled(boolean enabled) {
@@ -74,6 +79,16 @@ public abstract class Module {
         } else {
             disable();
         }
+    }
+
+    /**
+     * Every time the UpdateEvent gets called, we're gonna call the onUpdate method
+     *
+     * @param event The event we want this to be called at, in this case the UpdateEvent
+     */
+    @Subscriber
+    public void onUpdateEvent(UpdateEvent event) {
+        onUpdate();
     }
 
     /**

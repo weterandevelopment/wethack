@@ -1,12 +1,16 @@
 package org.proswiss.wethack.event.listeners;
 
 import cookiedragon.eventsystem.Subscriber;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.gameevent.InputEvent;
 import org.lwjgl.input.Keyboard;
 import org.proswiss.wethack.event.events.KeyPressEvent;
 import org.proswiss.wethack.module.Module;
 import org.proswiss.wethack.module.ModuleManager;
+
+/**
+ * Listens to Key Presses
+ *
+ * @author Darki
+ */
 
 public class KeyListener {
 

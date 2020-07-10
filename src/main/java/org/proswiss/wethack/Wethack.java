@@ -6,7 +6,9 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import org.proswiss.wethack.command.CommandManager;
 import org.proswiss.wethack.event.listeners.Adapter;
+import org.proswiss.wethack.event.listeners.CommandListener;
 import org.proswiss.wethack.event.listeners.KeyListener;
 import org.proswiss.wethack.module.ModuleManager;
 
@@ -45,10 +47,18 @@ public class Wethack {
         EventDispatcher.Companion.register(KeyListener.INSTANCE);
         EventDispatcher.Companion.subscribe(KeyListener.INSTANCE);
 
+        // Put the CommandListener on the EventDispatcher Bus
+        EventDispatcher.Companion.register(CommandListener.INSTANCE);
+        EventDispatcher.Companion.subscribe(CommandListener.INSTANCE);
+
         // Put the Adapter on the Forge Event Bus
         MinecraftForge.EVENT_BUS.register(new Adapter());
 
+        // Initialize the Module Manager. This initializes the modules.
         ModuleManager.initialize();
+
+        // Initialize the Command Manager. This initializes the commands.
+        CommandManager.initialize();
     }
 
     /**

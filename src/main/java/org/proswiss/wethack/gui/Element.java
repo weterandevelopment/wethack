@@ -6,16 +6,19 @@ package org.proswiss.wethack.gui;
  * @Author zyktex
  */
 public abstract class Element {
-    private final String name;
+    protected final String name;
 
-    private float posX;
-    private float posY;
+    protected float posX;
+    protected float posY;
 
-    private final float width;
-    private final float height;
+    protected float lastPosX;
+    protected float lastPosY;
 
-    private boolean dragging;
-    private boolean extended;
+    protected final float width;
+    protected final float height;
+
+    protected boolean dragging;
+    protected boolean extended;
 
     /**
      *
@@ -77,6 +80,22 @@ public abstract class Element {
         this.posY = posY;
     }
 
+    public float getLastPosX() {
+        return this.lastPosX;
+    }
+
+    public void setLastPosX(float lastPosX) {
+        this.lastPosX = lastPosX;
+    }
+
+    public float getLastPosY() {
+        return this.lastPosY;
+    }
+
+    public void setLastPosY(float lastPosY) {
+        this.lastPosY = lastPosY;
+    }
+
     /**
      * @return boolean if element in dragging mode
      */
@@ -110,5 +129,21 @@ public abstract class Element {
      */
     public void setExtended(boolean extended) {
         this.extended = extended;
+    }
+
+    /**
+     * This checks if the mouse is within the element's bounds
+     *
+     * @param mouseX current X position of mouse
+     * @param mouseY current Y position of mouse
+     * @param x starting X of element
+     * @param y starting Y of element
+     * @param width width of element
+     * @param height height of element
+     *
+     * @return boolean if the mouse is inside specified bounds or not
+     */
+    public boolean mouseWithinBounds(int mouseX, int mouseY, double x, double y, double width, double height) {
+        return (mouseX >= x && mouseX <= x + width && mouseY >= y && mouseY <= y + height);
     }
 }
